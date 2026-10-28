@@ -46,7 +46,51 @@ This is what happens in step 2:
 |`blank quantity`     |Skipped                 |
 |`blalnk price`       |Skipped                 |
 
-The rows with unknowns, blanks and string texts as values are filtered out.
+The rows with unknowns, blanks and string texts as values are filtered out. Other values the code rejects, even though this file doesn't contain them: `nan`, `inf` and `1e3` (Python would happily turn them into floats, but they are not till prices), negative numbers, zero quantities or prices, and fractional quantities like `1.5` (you can't sell half a phone). The check is deliberately simple: after removing spaces, commas and KES, what's left must be digits with at most one decimal point.
+
+**An Assumption**: Why not fill in missing prices from other rows? Every product has had one price all month, so `S-3030` is almost certainly `64,999`. But "almost certainly" is a guess, and an imputed price is not recorded revenue. Instead I report what the skipped rows might be worth, below.
+
+#### Step 3 : Total revenue
+`total_revenue(rows)` sums up (`quantity` × `unit_price_kes`) for every kept row in `clean_rows`.
+
+#### Step 4 : Revenue by product, store and payment method
+`revenue_by(rows, field)` uses a plain dict: if the key isn't in the dict yet, start it at 0.0, then add the row's revenue. One function serves all three breakdowns because the field name is a parameter. No `defaultdict`, no `Counter`. Printed highest first.
+
+#### Step 5 : Top three products
+`top_n(totals, n)` returns `(product, revenue)` tuples using `sorted(..., key=lambda item:...)`. The key sorts by revenue descending, and ties are broken alphabetically by product name. I chose that because it is deterministic: the same data always gives the same order, instead of depending on dictionary insertion order. (There are no ties among the top 3 in this data, but a quick test with two products on 10 returns them A before B.)
+
+#### Step 6 : High-value transactions
+`high_value(rows: list[dict], threshold: float)` returns a list of dictionaries with revenue above the threshhold. Rather than using a list comprehension I decide to form an empty list then loop in each dictinary in the `clean_rows` list, find revenue above threshhold and appended to my empty list.
+
+#### Step 7 : Statistical functions
+functions `mean`, `median` and `minimum_maximum` are written by hand, with no statistics module and no `.min()` or `.max()` inside `minimum_maximum` function:
+
+**mean:** running sum / count.
+**median:** sort the values first, take the middle value if the count is odd, or average the two middle values for an even count.
+**minimum_maximum:** sort the values(will sort from smallest to largest by default), use index to get the smallest and largest value from in and max values respectively.
+
+Each `raises ValueError("... needs at least one value, got an empty list")` for an empty list, instead of a confusing `ZeroDivisionError` or `IndexError`. They are applied to per-transaction revenue.
+
+#### Step 8 : Verifying with Pandas
+verify_with_pandas(path, my_results) re-reads the CSV and applies the same cleaning rules but with different tools: `str.replace()` and `pd.to_numeric(errors="coerce")` instead of my `parse_number`. That way it checks my logic rather than reusing it. It returns these parameters that were earlier calculated entirely by data structures: 
+
+```python
+    print(df)                                                       #convert_rows(rows)/clean_rows
+    print(f"TOTAL ROWS: {total_rows}")                              #len(clean_rows
+    print(f"TOTAL_REVENUE: {total_revenue_df}")                       #total_revenue(rows)
+    print(f"GROUPED REVENUE BY STORE:\n {revenue_by_store_df}")       #revenue_by(rows, field)
+    print(f"GROUPED REVENUE BY PRODUCT:\n {revenue_by_product_df}")   #revenue_by(rows, field)
+    print(f"GROUPED REVENUE BY PAYMENT:\n {revenue_by_payment_df}")  #revenue_by(rows, field)
+    print()
+    print(f"TOP 3 PRODUCTS BY REVENUE:\n {top_3_products}")   #top_n(totals, n)
+    print()
+    print(f"ABOVE THRESHHOLD SALES:\n {biggest_sales}")      #high_value(rows: list[dict], threshold: float)
+    print()
+    print(f'AVERAGE REVENUE: {average_revenue}')         #mean()
+    print(f'MEDIAN REVENUE: {middle_revenue}')           #median()
+    print(f"LOWEST REVENUE: {lowest_revenue}")           #minimum_maximum()
+    print(f"HIGHEST REVENUE: {highest_revenue}")         #minimum_maximum()
+```
 
 
 
