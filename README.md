@@ -91,15 +91,39 @@ verify_with_pandas(path, my_results) re-reads the CSV and applies the same clean
     print(f"LOWEST REVENUE: {lowest_revenue}")           #minimum_maximum()
     print(f"HIGHEST REVENUE: {highest_revenue}")         #minimum_maximum()
 ```
+### Post Analysis Summary/ Headlines(46 out of 50 rows)
+1. Payment method contributing to the most revenue `MPESA : 735570.0`
+2. Product generating the most revenue `HP 15 Laptop: 389994.0`
+3. The store generating the most revenue `Kisumu Mega Plaza: 449678`
+4. Total Revenue generated `1310812.0`
+5. Maximum Revenue generated `259996.0`
+6. Minimum Revenue generated `1499.0`
+7. Average Revenue generated `28495.91`
 
+### Discripancies
+We are trying to see matches and mismatches between calculated values from the parsed_data and dataframe values:
 
+|Statisctics        |Calculated values            |Dataframe values            |
+|-------------------|-----------------------------|----------------------------|
+|Mean               |28706.96                     |28495.91                    |
+|Median             |10998.0                      |11097                       |
+|Minimum revenue    |1499.0                       |1499.0                      |
+|Maximum revenue    |259996.0                     |259996.0                    |
+|Output rows        |45                           |46                          |
+|HRP                |Lenovo Tab:149994.0          |HP 15 Laptop:389994.0       |
 
+**HRP** stands for Highest Revenue_generating Product
 
+### Data Quality Warning/Evaluation
+4 rows were skipped, so the total is a definitely a lower bound. Using the prices charged elsewhere in the month, they are probably worth roughly KES `90,000+` in total:
 
+|Transaction_id                 |Problem                          |Estuimated value                      |
+|-------------------------------|---------------------------------|--------------------------------------|
+|S-3006                         |quantity `two`                   |3199 * 2 = 6398                       |
+|S-3035                         |quantity `blank`                 |min value= 13,499->(Tecno Spark 20)   |
+|S-3030                         |price `N/A`                      |HP 15 Laptop at 64,999/=              |
+|S-3039                         |price `blank`                    |	5,999 (Safaricom Neon Ray)           |
 
+**NOTE:** S-3030 could have been included in high values Sales
 
-
-
-#### Post Analysis Headlines(46 out of 50 rows)
-|Total Revenue  
 
