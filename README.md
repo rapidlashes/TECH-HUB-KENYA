@@ -44,7 +44,7 @@ This is what happens in step 2:
 |N/A                  |Skipped                 |
 |'two'                |Skipped                 |
 |`blank quantity`     |Skipped                 |
-|`blalnk price`       |Skipped                 |
+|`blank price`       |Skipped                 |
 
 The rows with unknowns, blanks and string texts as values are filtered out. Other values the code rejects, even though this file doesn't contain them: `nan`, `inf` and `1e3` (Python would happily turn them into floats, but they are not till prices), negative numbers, zero quantities or prices, and fractional quantities like `1.5` (you can't sell half a phone). The check is deliberately simple: after removing spaces, commas and KES, what's left must be digits with at most one decimal point.
 
