@@ -1,0 +1,44 @@
+total rows: 50
+total valid rows: 45
+total invalid rows: 5
+total revenue: 1291813.0
+total revenue by store: {'Kisumu Mega Plaza': 399680.0, 'Nairobi CBD': 329586.0, 'Westgate': 229980.0, 'Mombasa City Mall': 124085.0, 'Nakuru Westside': 112990.0}
+total revenue by product: {'Lenovo Tab M10': 149994.0, 'Tecno Spark 20': 134990.0, 'HP 15 Laptop': 129998.0, 'Hisense 43in Smart TV': 116997.0, 'JBL Go 3 Speaker': 38493.0, 'Infinix Hot 40': 31998.0, 'Anker Power Bank 20000': 25794.0, 'Xiaomi Redmi Buds': 19194.0, 'Samsung Galaxy A15': 18999.0, 'Oraimo FreePods': 16794.0, 'USB-C Charger 25W': 16489.0, 'Safaricom Neon Ray': 5999.0}
+total revenue by payment: {'M-Pesa': 735570.0, 'Cash': 279377.0, 'Card': 266370.0}
+top 3 products: [('Lenovo Tab M10', 149994.0), ('Tecno Spark 20', 134990.0), ('HP 15 Laptop', 129998.0)]
+high value product: [{'sale_id': 'S-3013', 'sale_date': '2026-09-08', 'store': 'Westgate', 'product': 'Lenovo Tab M10', 'payment_method': 'M-Pesa', 'quantity': 4, 'unit_price': 24999.0, 'revenue': 99996.0}, {'sale_id': 'S-3017', 'sale_date': '2026-09-10', 'store': 'Kisumu Mega Plaza', 'product': 'Hisense 43in Smart TV', 'payment_method': 'M-Pesa', 'quantity': 4, 'unit_price': 38999.0, 'revenue': 155996.0}, {'sale_id': 'S-3022', 'sale_date': '2026-09-13', 'store': 'Nairobi CBD', 'product': 'HP 15 Laptop', 'payment_method': 'M-Pesa', 'quantity': 4, 'unit_price': 64999.0, 'revenue': 259996.0}, {'sale_id': 'S-3036', 'sale_date': '2026-09-21', 'store': 'Nakuru Westside', 'product': 'Tecno Spark 20', 'payment_method': 'M-Pesa', 'quantity': 4, 'unit_price': 13499.0, 'revenue': 53996.0}, {'sale_id': 'S-3048', 'sale_date': '2026-09-30', 'store': 'Kisumu Mega Plaza', 'product': 'HP 15 Laptop', 'payment_method': 'Card', 'quantity': 2, 'unit_price': 64999.0, 'revenue': 129998.0}]
+mean: 28706.955555555556
+median: 10998.0
+lowest value: 1499.0
+highest value: 259996.0
+
+PANDAS STATISTICS:
+total rows : 50
+total valid rows : 46
+total invalid rows : 4
+total revenue : 1310812.0
+total revenue by store : {'Anker Power Bank 20000': 38691.0, 'HP 15 Laptop': 389994.0, 'Hisense 43in Smart TV': 272993.0, 'Infinix Hot 40': 63996.0, 'JBL Go 3 Speaker': 49491.0, 'Lenovo Tab M10': 199992.0, 'Oraimo FreePods': 19593.0, 'Safaricom Neon Ray': 11998.0, 'Samsung Galaxy A15': 56997.0, 'Tecno Spark 20': 161988.0, 'USB-C Charger 25W': 19487.0, 'Xiaomi Redmi Buds': 25592.0}
+total revenue by product : {'Anker Power Bank 20000': 38691.0, 'HP 15 Laptop': 389994.0, 'Hisense 43in Smart TV': 272993.0, 'Infinix Hot 40': 63996.0, 'JBL Go 3 Speaker': 49491.0, 'Lenovo Tab M10': 199992.0, 'Oraimo FreePods': 19593.0, 'Safaricom Neon Ray': 11998.0, 'Samsung Galaxy A15': 56997.0, 'Tecno Spark 20': 161988.0, 'USB-C Charger 25W': 19487.0, 'Xiaomi Redmi Buds': 25592.0}
+total revenue by payment : {'Anker Power Bank 20000': 38691.0, 'HP 15 Laptop': 389994.0, 'Hisense 43in Smart TV': 272993.0, 'Infinix Hot 40': 63996.0, 'JBL Go 3 Speaker': 49491.0, 'Lenovo Tab M10': 199992.0, 'Oraimo FreePods': 19593.0, 'Safaricom Neon Ray': 11998.0, 'Samsung Galaxy A15': 56997.0, 'Tecno Spark 20': 161988.0, 'USB-C Charger 25W': 19487.0, 'Xiaomi Redmi Buds': 25592.0}
+top 3 products : [('product',), ('revenue',)]
+high value product : {'sale_id': {12: 'S-3013', 16: 'S-3017', 21: 'S-3022', 35: 'S-3036', 47: 'S-3048'}, 'sale_date': {12: '2026-09-08', 16: '2026-09-10', 21: '2026-09-13', 35: '2026-09-21', 47: '2026-09-30'}, 'store': {12: 'Westgate', 16: 'Kisumu Mega Plaza', 21: 'Nairobi CBD', 35: 'Nakuru Westside', 47: 'Kisumu Mega Plaza'}, 'product': {12: 'Lenovo Tab M10', 16: 'Hisense 43in Smart TV', 21: 'HP 15 Laptop', 35: 'Tecno Spark 20', 47: 'HP 15 Laptop'}, 'quantity': {12: 4.0, 16: 4.0, 21: 4.0, 35: 4.0, 47: 2.0}, 'unit_price_kes': {12: 24999.0, 16: 38999.0, 21: 64999.0, 35: 13499.0, 47: 64999.0}, 'payment_method': {12: 'M-Pesa', 16: 'M-Pesa', 21: 'M-Pesa', 35: 'M-Pesa', 47: 'Card'}, 'revenue': {12: 99996.0, 16: 155996.0, 21: 259996.0, 35: 53996.0, 47: 129998.0}}
+mean : 28495.91304347826
+median : 11097.0
+lowest value : 1499.0
+highest value : 259996.0
+
+COMPARING THE STATS FROM PANDAS AND THOSE CALCULATED ABOVE
+total rows : match
+total valid rows : mismatch
+total invalid rows : mismatch
+total revenue : mismatch
+total revenue by store : mismatch
+total revenue by product : mismatch
+total revenue by payment : mismatch
+top 3 products : mismatch
+high value product : mismatch
+mean : mismatch
+median : mismatch
+lowest value : match
+highest value : match
+
